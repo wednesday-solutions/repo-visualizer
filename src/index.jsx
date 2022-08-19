@@ -51,7 +51,7 @@ const main = async () => {
   let doesBranchExist = true
 
   if (branch) {
-    await exec('git', ['fetch'])
+    await exec('git', ['fetch', '--all'])
 
     try {
       await exec('git', ['rev-parse', '--verify', branch])
