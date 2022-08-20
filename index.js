@@ -26295,6 +26295,7 @@ var main = async () => {
   if (branch) {
     await (0, import_exec.exec)("git", ["fetch", "--all"]);
     try {
+      await (0, import_exec.exec)("git", ["status"]);
       await (0, import_exec.exec)("git", ["rev-parse", "--verify", branch]);
       await (0, import_exec.exec)("git", ["checkout", branch]);
     } catch {

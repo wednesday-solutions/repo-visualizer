@@ -54,6 +54,7 @@ const main = async () => {
     await exec('git', ['fetch', '--all'])
 
     try {
+      await exec('git', ['status'])
       await exec('git', ['rev-parse', '--verify', branch])
       await exec('git', ['checkout', branch])
     } catch {
