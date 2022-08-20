@@ -26293,11 +26293,9 @@ var main = async () => {
   await import_fs2.default.writeFileSync(outputFile, componentCodeString);
   let doesBranchExist = true;
   if (branch) {
-    await (0, import_exec.exec)("git", ["fetch", "--all"]);
     try {
-      await (0, import_exec.exec)("git", ["status"]);
-      await (0, import_exec.exec)("git", ["rev-parse", "--verify", branch]);
-      await (0, import_exec.exec)("git", ["checkout", branch]);
+      await (0, import_exec.exec)("git", ["fetch"]);
+      await (0, import_exec.exec)("git", ["switch", "-c", branch, "--track", `origin/${branch}`]);
     } catch {
       doesBranchExist = false;
       core.info(`Branch ${branch} does not yet exist, creating ${branch}.`);
